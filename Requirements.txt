@@ -1,0 +1,4 @@
+torch==1.12.1
+numpy==1.12.1
+tqdm==4.61.2
+sklearn
