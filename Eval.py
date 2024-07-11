@@ -20,7 +20,7 @@ def get_func_classes(func_embeddings, MIN_BLOCKS=0):
     func2id = {}
     cop_func = []
     for funcN, embed in func_embeddings.items():
-        func = funcN.split("|||")[0] + "|||" + funcN.split("|||")[1] + "|||" + funcN.split("|||")[-1]
+        func = funcN.split("_")[0] + "|||" + funcN.split("_")[5] + "|||" + funcN.split("_")[-1]
         cop_func.append(funcN)
         if func not in func2id:
             func2id[func] = len(func2id)
@@ -28,7 +28,7 @@ def get_func_classes(func_embeddings, MIN_BLOCKS=0):
     for func, id in func2id.items():
         classes.append([])
     for funcN in cop_func:
-        func = funcN.split("|||")[0] + "|||" + funcN.split("|||")[1] + "|||" + funcN.split("|||")[-1]
+        func = funcN.split("_")[0] + "|||" + funcN.split("_")[5] + "|||" + funcN.split("_")[-1]
         classes[func2id[func]].append(funcN)
     new_class = []
     for cl in classes:
@@ -164,7 +164,7 @@ def map_eval(eval_type=0, eval_p="", embed_path="", model="", poolsize=10000):
     print(eval_func_embeddings_path)
     if not os.path.exists(eval_p):
         os.makedirs(eval_p)
-    eval_data_path = eval_p + "/" + model + "_" + str(poolsize) + "_eval_data_" + str(eval_type) + ".json"
+    eval_data_path = eval_p + "/" + model + "_" + str(poolsize) + "_eval_data" + str(eval_type) + ".json"
 
     print("it is generating eval data ...")
     if not os.path.exists(eval_data_path):
@@ -194,7 +194,7 @@ def combine_eval(model_name, f_strings, global_data, external_funcs, eval_type=0
     else:
         print("Eval data is not exist!")
         return
-    model_path = model_name + "/HsgGNN-best.pt"
+    model_path = model_name + "/SEM-best.pt"
     model = torch.load(model_path)
     predict_num = 0
     lens = []
@@ -260,31 +260,31 @@ def init_eval_poolsize(model="Asm2vec", PS=[], eval_path="", embed_path=""):
     return ans
 
 def binenhance_poolsize(model, data_base, PS=[], eval_path="", embed_path=""):
-    f_strings_path = os.path.join(os.path.join(data_base, "RTFs"), "all_strings.json")
-    with open(f_strings_path, "r") as f:
-        f_strings = json.load(f)
-    f_ef_path = os.path.join(os.path.join(data_base, "RTFs"), "all_external_funcs.json")
+    f_rs_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_rs.json")
+    with open(f_rs_path, "r") as f:
+        f_rs = json.load(f)
+    f_ef_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_ef.json")
     with open(f_ef_path, "r") as f:
         f_ef = json.load(f)
-    f_gd_path = os.path.join(os.path.join(data_base, "RTFs"), "all_global_data.json")
+    f_gd_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_gd.json")
     with open(f_gd_path, "r") as f:
         f_gd = json.load(f)
     ans = []
     model_path = os.path.join(os.path.join(data_base, "save_models"), model)
     for p in PS:
-        a = combine_eval(model_path, f_strings, f_gd, f_ef, eval_type=0, model=model, poolsize=p, savepaths=embed_path, eval_p=eval_path)
+        a = combine_eval(model_path, f_rs, f_gd, f_ef, eval_type=0, model=model, poolsize=p, savepaths=embed_path, eval_p=eval_path)
         ans.append(a)
     return ans
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-path", type=str, default="dataset1_Eval",
+    parser.add_argument("--data-path", type=str, default="dataset2_Eval",
                         help="the path of function embedding(including initial model and BinEnhance).")
     args = parser.parse_args()
     print(args)
     data_path = args.data_path
-    models = ["Gemini", "jTrans", "Asteria", "TREX", "Asm2vec"]
-    PS = [10000] # [2, 16, 32, 128, 512, 1024, 2048, 4096, 8192, 10000]
+    models = ["HermesSim", "Gemini", "Asteria", "TREX", "Asm2vec"]
+    PS = [1000] # [2, 16, 32, 128, 512, 1024, 2048, 4096, 8192, 10000]
     ans = []
     for model in models:
         ans.append([[], [], []])
@@ -293,12 +293,10 @@ def main():
         init_embed_path = os.path.join(os.path.join(data_path, model), "test_function_embeddings.json")
         binenhance_embed_path = os.path.join(os.path.join(data_path, model + "+BinEnhance"), "test_function_embeddings.json")
         ans[models.index(model)][0] = init_eval_poolsize(model=model, PS=PS, eval_path=eval_path, embed_path=init_embed_path)
-        ans[models.index(model)][1] = init_eval_poolsize(model=model, PS=PS, eval_path=eval_path, embed_path=binenhance_embed_path)
         ans[models.index(model)][2] = binenhance_poolsize(model=model, data_base=data_path, PS=PS, eval_path=eval_path,
                                                      embed_path=binenhance_embed_path)
         print("PoolSize:" + str(PS))
         print("Original Model MAP scores:" + str(ans[models.index(model)][0]))
-        print("Original Model + BinEnhance_nosim MAP scores:" + str(ans[models.index(model)][1]))
         print("Original Model + BinEnhance MAP scores:" + str(ans[models.index(model)][2]))
         print("---------------------------------------" + model + "--------------------------------------------")
 
