@@ -26,7 +26,7 @@ python Eval.py --data-path="xxx/Eval" --dataset=2<br>
 ################################################<br>
 **$D1$ in the paper**: After communicating with the Asteria author, this dataset will be released later.<br>
 
-**$D2<u>_</u>{norm}$ and $D2<u>_</u>{noinline}$ in the paper (The homologous function pairs for the evaluation of the function inline scenario can be constructed from them)**: These datasets can download from [normal_dataset](https://drive.google.com/file/d/1K9ef-OoRBr0X5u8g2mlnYqh9o1i6zFij/view) and [noinline_dataset](https://drive.google.com/file/d/1wt7GY-DDp8J_2zeBBVUrcfWIyerg_xLO/view) in [Binkit](https://github.com/SoftSec-KAIST/BinKit).<br>
+**$D2\\_{norm}$ and $D2<u>_</u>{noinline}$ in the paper (The homologous function pairs for the evaluation of the function inline scenario can be constructed from them)**: These datasets can download from [normal_dataset](https://drive.google.com/file/d/1K9ef-OoRBr0X5u8g2mlnYqh9o1i6zFij/view) and [noinline_dataset](https://drive.google.com/file/d/1wt7GY-DDp8J_2zeBBVUrcfWIyerg_xLO/view) in [Binkit](https://github.com/SoftSec-KAIST/BinKit).<br>
 
 **$D3<u>_</u>{firmware}$**: The firmware dataset will be released in the future due to its large size.<be>
 
