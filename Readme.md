@@ -36,7 +36,7 @@ python Eval.py --data-path="xxx/Eval" --dataset=2<br>
 ################################################<br>
 
 [^1]: H. He, X. Lin, Z. Weng, R. Zhao, S. Gan, L. Chen, Y. Ji, J. Wang, and Z. Xue, “Code is not natural language: Unlock the power of semanticsoriented graph representation for binary code similarity detection,” in 33rd USENIX Security Symposium (USENIX Security 24), PHILADELPHIA, PA, 2024. 
-[^2]: K. Pei, Z. Xuan, J. Yang, S. Jana, and B. Ray, “Learning approximate execution semantics from traces for binary function similarity,” IEEE Transactions on Software Engineering, vol. 49, no. 4, pp. 2776–2790, 2022.<br>
+[^2]: K. Pei, Z. Xuan, J. Yang, S. Jana, and B. Ray, “Learning approximate execution semantics from traces for binary function similarity,” IEEE Transactions on Software Engineering, vol. 49, no. 4, pp. 2776–2790, 2022.
 [^3]: S. Yang, L. Cheng, Y. Zeng, Z. Lang, H. Zhu, and Z. Shi, “Asteria: Deep learning-based ast-encoding for cross-platform binary code similarity detection,” in 2021 51st Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN). IEEE, 2021, pp. 224–236.
 [^4]: S. H. Ding, B. C. Fung, and P. Charland, “Asm2vec: Boosting static representation robustness for binary clone search against code obfuscation and compiler optimization,” in 2019 IEEE Symposium on Security and Privacy (SP). IEEE, 2019, pp. 472–489. 
 [^5]: X. Xu, C. Liu, Q. Feng, H. Yin, L. Song, and D. Song, “Neural network based graph embedding for cross-platform binary code similarity detection,” in Proceedings of the 2017 ACM SIGSAC conference on computer
