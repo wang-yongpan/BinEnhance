@@ -81,4 +81,3 @@ class RGCNLayer(nn.Module):
         return g
 
 
-

@@ -1,0 +1,8 @@
+dgl==0.9.1
+torch==2.1.2
+networkx==2.5.1
+tqdm==4.66.5
+numpy==1.23.3
+sklearn
+transformers==4.44.2
+annoy==1.17.1
