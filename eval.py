@@ -7,6 +7,7 @@ import random
 from tqdm import tqdm
 import os
 from model import RGCN_Model
+import pickle
 
 def set_random_seed(seed_value=1234):
     torch.manual_seed(seed_value)  # cpu  vars
@@ -260,15 +261,15 @@ def init_eval_poolsize(model="Asm2vec", PS=[], eval_path="", embed_path=""):
     return ans
 
 def binenhance_poolsize(model, data_base, PS=[], eval_path="", embed_path=""):
-    f_rs_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_rs.json")
-    with open(f_rs_path, "r") as f:
-        f_rs = json.load(f)
-    f_ef_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_ef.json")
-    with open(f_ef_path, "r") as f:
-        f_ef = json.load(f)
-    f_gd_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_gd.json")
-    with open(f_gd_path, "r") as f:
-        f_gd = json.load(f)
+    f_rs_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_rs.pkl")
+    with open(f_rs_path, "rb") as f:
+        f_rs = pickle.load(f)
+    f_ef_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_ef.pkl")
+    with open(f_ef_path, "rb") as f:
+        f_ef = pickle.load(f)
+    f_gd_path = os.path.join(os.path.join(data_base, "RDFs"), "functions_gd.pkl")
+    with open(f_gd_path, "rb") as f:
+        f_gd = pickle.load(f)
     ans = []
     model_path = os.path.join(os.path.join(data_base, "save_models"), model)
     for p in PS:
