@@ -1,6 +1,6 @@
 # BinEnhance<br>
-This is where BinEnhance's code and data are stored.<br>
-**Paper Title:** [BinEnhance: A Enhancement Framework Based on External Environment Semantics for Binary Code Search](https://arxiv.org/abs/2411.01102)<br>
+This is where BinEnhance's (**NDSS 2025**) code and data are stored.<br>
+**Paper Title:** [BinEnhance: An Enhancement Framework Based on External Environment Semantics for Binary Code Search](https://arxiv.org/abs/2411.01102)<br>
 ################################################<br>
 **Eval Part**<br>
 ################################################<br>
