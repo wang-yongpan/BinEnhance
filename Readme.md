@@ -1,8 +1,8 @@
 # BinEnhance<br>
 The datasets and source code of the **NDSS 2025** paper《[BinEnhance: An Enhancement Framework Based on External Environment Semantics for Binary Code Search](https://arxiv.org/abs/2411.01102)》.<br>
-################################################<br>
-**Eval Part**<br>
-################################################<br>
+
+# Eval
+
 **[Eval]** If you just want to evaluate the improvement of BinEnhance on the five baselines, you can complete the steps in this section. <br>
 
 1. Install the required environment, the python environment we use is python3.8<br>
@@ -21,13 +21,13 @@ pip install -r Requirements.txt
 python Eval.py --data-path="xxx/dataset2_Eval"<br>
 ```
 
-################################################<br>
-**Training and Inference Part of BinEnhance**<br>
-################################################<br>
-**[Train]** If you want to reproduce the BinEnhance Framework, you can try it by the following steps.<br>
-**[PS:]** The following steps require the IDA Pro tool to extract our eesg, GPUs to train, and other requirements (such as multiprocessing). You may need to modify some settings in some code (such as binary_dir path). If you do not have the above conditions, you can run the Eval part. We have provided the intermediate results. <br>
 
-1. Install the required environment, the python environment we use is python3.8<br>
+# Training and Inference Part of BinEnhance
+
+**[Train]** If you want to reproduce the BinEnhance Framework, you can try it by following the steps.<br>
+**[PS:]** The following steps require the IDA Pro tool to extract our EESG, GPUs to train, and other requirements (such as multiprocessing). You may need to modify some settings in some code (such as the binary_dir path). If you do not have the above conditions, you can run the Eval part. We have provided the intermediate results. <br>
+
+1. Install the required environment, the Python environment we use is Python 3.8 <br>
 
 ```python
 pip install -r requirements_train.txt
@@ -46,7 +46,7 @@ def get_unified_funcname(funcname):
     return funcname
 ```
 
-And then run whitening_transformation.py to reduce the dimension of embeddings.
+Then, run whitening_transformation.py to reduce the dimension of the embeddings.
 
 ```python
 python whitening_transformation.py --input-dir xxx --output-dir xxx --dimension xxx
@@ -60,9 +60,9 @@ python mpnet_generate.py --input-dir xxx --output-dir xxx --dimension xxx --mode
 
 ```
 
-3. EESG construction and SEM train.<br>
+3. EESG construction and SEM training.<br>
 
-We need to modify IDA_script/settings.py and Run IDA python scripts in the IDA_script folder to extract EESG.
+We need to modify IDA_script/settings.py and Run IDA Python scripts in the IDA_script folder to extract EESG.
 ```python
 python extract.py --process-num 30 --output-dir xxx
 
@@ -79,16 +79,22 @@ python train.py --base-path xxx --model-save xxx --fis HermesSim --name dataset2
 
 See the Eval part.
 
-################################################<br>
-**Datasets in our paper**<br>
-################################################<br>
+# Datasets in our paper
 
-**D2_norm and D2_noinline in the paper (The homologous function pairs for the evaluation of the function inline scenario can be constructed from them)**: These datasets can download from [normal_dataset](https://drive.google.com/file/d/1K9ef-OoRBr0X5u8g2mlnYqh9o1i6zFij/view) and [noinline_dataset](https://drive.google.com/file/d/1wt7GY-DDp8J_2zeBBVUrcfWIyerg_xLO/view) in [Binkit](https://github.com/SoftSec-KAIST/BinKit).<br>
+D2_norm and D2_noinline in the paper (The homologous function pairs for the evaluation of the function inline scenario can be constructed from them)**: These datasets can be downloaded from [normal_dataset](https://drive.google.com/file/d/1K9ef-OoRBr0X5u8g2mlnYqh9o1i6zFij/view) and [noinline_dataset](https://drive.google.com/file/d/1wt7GY-DDp8J_2zeBBVUrcfWIyerg_xLO/view) in [Binkit](https://github.com/SoftSec-KAIST/BinKit).<be>
 
 
-################################################<br>
-**References**<br>
-################################################<br>
+# Citation
+If this work is helpful for your research, please consider citing our work.
+```
+@article{wang2024binenhance,
+  title={BinEnhance: An Enhancement Framework Based on External Environment Semantics for Binary Code Search},
+  author={Wang, Yongpan and Li, Hong and Zhu, Xiaojie and Li, Siyuan and Dong, Chaopeng and Yang, Shouguo and Qin, Kangyuan},
+  journal={arXiv preprint arXiv:2411.01102},
+  year={2024}
+}
+```
+# References
 
 [^1]: H. He, X. Lin, Z. Weng, R. Zhao, S. Gan, L. Chen, Y. Ji, J. Wang, and Z. Xue, “Code is not natural language: Unlock the power of semantics oriented graph representation for binary code similarity detection,” in 33rd USENIX Security Symposium (USENIX Security 24), PHILADELPHIA, PA, 2024. 
 [^2]: K. Pei, Z. Xuan, J. Yang, S. Jana, and B. Ray, “Learning approximate execution semantics from traces for binary function similarity,” IEEE Transactions on Software Engineering, vol. 49, no. 4, pp. 2776–2790, 2022.
