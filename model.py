@@ -103,7 +103,17 @@ class RGCN_Model(nn.Module):
     def build_output_layer(self):
         return RGCNLayer(self.h_dim, self.out_dim, self.num_rels, self.num_bases,
                          activation=F.leaky_relu, negative_slope=self.negative_slope)
-
+    def forward_once(self, g):
+        g = g.to(self.gpu)
+        g.ndata['h'] = g.ndata['feature'].to(self.gpu)
+        for layer in self.layers:
+            g = layer(g)
+        embed = g.ndata['h'][0]
+        if self.residual:
+            embed_r = self.res_fc(g.ndata['feature'][0])
+            embed = g.ndata['h'][0] + embed_r
+        return embed
+        
     def forward(self, batch, batch_size, f_strings, global_data, external_funcs):
         a_g, p_g, n_g, funcNames = batch
         a_g = a_g.to(self.gpu)
