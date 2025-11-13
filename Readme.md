@@ -86,27 +86,6 @@ D2_norm and D2_noinline in the paper (The homologous function pairs for the eval
 
 # Citation
 If this work is helpful for your research, please consider citing our work.
-```
-@inproceedings{DBLP:conf/ndss/Wang0ZLDYQ25,
-  author       = {Yongpan Wang and
-                  Hong Li and
-                  Xiaojie Zhu and
-                  Siyuan Li and
-                  Chaopeng Dong and
-                  Shouguo Yang and
-                  Kangyuan Qin},
-  title        = {BinEnhance: An Enhancement Framework Based on External Environment
-                  Semantics for Binary Code Search},
-  booktitle    = {32nd Annual Network and Distributed System Security Symposium, {NDSS}
-                  2025, San Diego, California, USA, February 24-28, 2025},
-  publisher    = {The Internet Society},
-  year         = {2025},
-  url          = {https://www.ndss-symposium.org/ndss-paper/binenhance-an-enhancement-framework-based-on-external-environment-semantics-for-binary-code-search/},
-  timestamp    = {Wed, 19 Mar 2025 15:12:36 +0100},
-  biburl       = {https://dblp.org/rec/conf/ndss/Wang0ZLDYQ25.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
-}
-```
 # References
 
 [^1]: H. He, X. Lin, Z. Weng, R. Zhao, S. Gan, L. Chen, Y. Ji, J. Wang, and Z. Xue, “Code is not natural language: Unlock the power of semantics oriented graph representation for binary code similarity detection,” in 33rd USENIX Security Symposium (USENIX Security 24), PHILADELPHIA, PA, 2024. 
